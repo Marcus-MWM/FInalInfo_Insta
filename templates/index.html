@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home Page</title>
+    </head>
+    <body>
+        <h1>Home Page!</h1>
+        {% for x in content %}
+            <p>{{x}}</p>
+            {% if x == "tim" %}
+                <p>Hello</p>
+            {% else %}
+                <p>not tim</p>
+            {% endif %}
+        {% endfor %}
+    </body>
+</html>
