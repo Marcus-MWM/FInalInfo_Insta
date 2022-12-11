@@ -1,17 +1,19 @@
-<!DOCTYPE html>
+{% extends "base.html" %} {% block title %} index {% endblock %}
+{% block content %}
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<html>
-    <head>
-        <title>Home Page</title>
-    </head>
-    <body>
 
-        <h1>Home Page!</h1>
+<head>
+    <title>Home Page</title>
+</head>
+<body>
 
-        <form>
-            <label for = "flabel"> Please enter the file containing your posts!</label>
-                
-        </form>
+    <h1>Home Page!</h1>
+
+    <form>
+        <label for = "flabel"> Please enter the file containing your posts!</label>
+              
+    </form>
         
-    </body>
-</html>
+</body>
+{% endblock %}
