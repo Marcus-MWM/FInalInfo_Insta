@@ -1,14 +1,13 @@
 {% extends "base.html" %} 
 {% block title %}Present Base Data{% endblock %}
 {% block content %}
-<h1>Email Report</h1>
+<h1>Posts</h1>
 <style>
 .table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
-
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -43,6 +42,7 @@ table {
       <td>{{value[1]}}</td>
     </tr>
     {% endfor %}
-  </table>
-  <br>
+</table>
+<br>
+<a href="{{url_for('pages.results')}}">Click Here for Results!</a>
 {% endblock %}

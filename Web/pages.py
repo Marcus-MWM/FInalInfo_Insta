@@ -38,17 +38,28 @@ def showBaseData():
                 text = getattr(comment,"text")
                 id = getattr(comment,"id")
 
-                tempdf = {"ID": id,"Text": text}
-                postDf = postDf.append(tempdf, ignore_index = True)
+                tempDf = {"ID": id,"Text": text}
+                postDf = postDf.append(tempDf, ignore_index = True)
                 postDf.to_csv("Web\postData.csv") 
-                data = postDf.values       
+        data = postDf.values       
         return render_template("showBaseData.html", data = data) 
     else:
         return f"<h1>Oh no! Something went wrong!<h1>"
 
+"""
 @pages.route("/results")
 def results():
     #Basically need to run the machinie learning algo and then with each row, calculate if spam or not
-    #Throw this data into another csv and present it
-    
-    return render_template("results.html")
+
+    postDf = pd.read_csv("Web\postData.csv")
+    outcomeDf = pd.DataFrame()
+
+    for row in postDf.rows: 
+        #throw row into algo and attach bool to df
+        #Spam = thatmethod
+        tempDf = {"ID":row[1],"Text":row[2],"IsSpam":}
+        outcomeDf = outcomeDf.append(tempDf, ignore_index = True)
+
+    data = outcomeDf.values
+    return render_template("results.html", data = data)
+"""

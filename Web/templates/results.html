@@ -1,0 +1,50 @@
+{% extends "base.html" %} 
+{% block title %}Results{% endblock %}
+{% block content %}
+<h1>Post Results</h1>
+<style>
+.table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  .tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  [data-href] { cursor: pointer; }
+
+</style>
+<table>
+    <tr>
+      <th>UserID</th>
+      <th>Text</th>
+      <th>IsSpam<th>
+    </tr>
+
+    {% for value in data %}
+    <tr>
+      <td>{{value[0]}}</td>
+      <td>{{value[1]}}</td>
+      <td>{{value[2]}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <br>
+{% endblock %}
