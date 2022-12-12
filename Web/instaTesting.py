@@ -8,13 +8,13 @@ L.load_session_from_file(user)
 
 posts = Profile.from_username(L.context, 'chrisgx21').get_posts()
 
-rngDf = pd.DataFrame()
+postDf = pd.DataFrame()
 for post in posts:
     for comment in post.get_comments(): 
         text = getattr(comment,"text")
         id = getattr(comment,"id")
         tempdf = {"ID": id,"Text": text}
 
-        rngDf = rngDf.append(tempdf, ignore_index = True)
+        postDf = postDf.append(tempdf, ignore_index = True)
+postDf.to_csv("Web\postData.csv")
 
-display(rngDf)

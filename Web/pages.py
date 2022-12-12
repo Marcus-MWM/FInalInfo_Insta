@@ -40,7 +40,15 @@ def showBaseData():
 
                 tempdf = {"ID": id,"Text": text}
                 postDf = postDf.append(tempdf, ignore_index = True)
-        postDf.to_csv("Web\postData.csv")        
-        return render_template("showBaseData.html") 
+                postDf.to_csv("Web\postData.csv") 
+                data = postDf.values       
+        return render_template("showBaseData.html", data = data) 
     else:
         return f"<h1>Oh no! Something went wrong!<h1>"
+
+@pages.route("/results")
+def results():
+    #Basically need to run the machinie learning algo and then with each row, calculate if spam or not
+    #Throw this data into another csv and present it
+    
+    return render_template("results.html")
