@@ -1,8 +1,9 @@
-from flask import Blueprint, render_template, request, redirect, url_for, session
+from flask import Blueprint, render_template, request, redirect, url_for
 import os 
 import getFirefoxSession
 from instaloader import *
 import pandas as pd  
+import machineLearn
 
 pages = Blueprint('pages', __name__)
 
@@ -38,28 +39,23 @@ def showBaseData():
                 text = getattr(comment,"text")
                 id = getattr(comment,"id")
 
-                tempDf = {"ID": id,"Text": text}
+                tempDf = {"User ID": id,"Message": text}
                 postDf = postDf.append(tempDf, ignore_index = True)
                 postDf.to_csv("Web\postData.csv") 
-        data = postDf.values       
+        data = postDf.values  
+
         return render_template("showBaseData.html", data = data) 
     else:
         return f"<h1>Oh no! Something went wrong!<h1>"
 
-"""
+
 @pages.route("/results")
 def results():
     #Basically need to run the machinie learning algo and then with each row, calculate if spam or not
 
-    postDf = pd.read_csv("Web\postData.csv")
     outcomeDf = pd.DataFrame()
+    machineLearn.main()
+    postDf = pd.read_csv("ML_Prediction.csv")
 
-    for row in postDf.rows: 
-        #throw row into algo and attach bool to df
-        #Spam = thatmethod
-        tempDf = {"ID":row[1],"Text":row[2],"IsSpam":}
-        outcomeDf = outcomeDf.append(tempDf, ignore_index = True)
-
-    data = outcomeDf.values
+    data = postDf.values
     return render_template("results.html", data = data)
-"""
