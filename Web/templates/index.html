@@ -1,11 +1,14 @@
-{% extends "base.html" %} {% block title %} Home {% endblock %}
+{% extends "base.html" %} 
+{% block title %} Home {% endblock %}
 {% block content %}
 
-<h1> Please add the csv Files That Contains Your Post</h1>
+<h1>Please Sign Into Instagram Through Firefox and Enter Your Username Below</h1>
 <br>
 
-<form>
-    
+<form action="{{url_for('pages.showBaseData')}}"method = "post">
+    <p>Username:</p>
+    <p> <input type = "text" name = "username">  </p>
+    <p> <input type = "submit" name = "submit">  </p>
 </form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
